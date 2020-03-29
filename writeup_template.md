@@ -32,6 +32,8 @@ The goals / steps of this project are the following:
 [image3_1]: ./output_images/HLScolorchannels_test1.png "HLS Channels"
 [image3_2]: ./output_images/HLScolorthresholds_test1.png "HLS Binary"
 [image3_3]: ./output_images/binary_test1.png "Original and Binary"
+[image4_1]: ./output_images/warp_test1.png "Warp Example"
+
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -86,7 +88,7 @@ After that, I combined both color and grandient thresholds. Here's an example of
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform includes a function called `warper()`, which appears in the same notebook under Step 3 headline.  The `warper()` function takes as inputs an image (`img`).  I chose the hardcode the source and destination points in the following manner:
 
 ```python
 src = np.float32(
@@ -110,9 +112,9 @@ This resulted in the following source and destination points:
 | 1127, 720     | 960, 720      |
 | 695, 460      | 960, 0        |
 
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+Then, I made use of the function `getPerspectiveTransform()` in order to calculate the perspective transform matrix, M. Then, I used the function `warpPerspective()` from OpenCV to warp the image.  I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
+![alt text][image4_1]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
