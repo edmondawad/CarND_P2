@@ -28,7 +28,9 @@ The goals / steps of this project are the following:
 [video1]: ./project_video.mp4 "Video"
 [image1_1]: ./output_images/undistort_output.png "Original and Undistorted"
 [image2_1]: ./output_images/undistort_test1.png "Original and Undistorted"
-
+[image3_1]: ./test_images/HLScolorchannel_test1.jpg "HLS Channels"
+[image3_2]: ./test_images/HLScolorthreshold_test1.jpg "HLS Binary"
+[image3_3]: ./test_images/binary_test1.jpg "Original and Binary"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -67,9 +69,19 @@ The code is in function `undistort()`. This function takes an image, `objpoints`
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used a combination of color and gradient thresholds to generate a binary image (thresholding steps in `P2.ipynb`).  For the color threshold, I converted to HLS, isolated each channel:
 
-![alt text][image3]
+![alt text][image3_1]
+
+Then tried a binary version for each channel (using lower thresholds for H). The S-channel seems like the best option, as appears here:
+
+![alt text][image3_2]
+
+For the gradient threshold, I used the H Channel as an input to calculate the derivative in the x direction, because lane lines are closer to vertical. Then, I took the absolute value of that in order to accentuate lines away from horizontal. Then, I converted the absolute value image to 8-bit, just to make sure my thresholds work on different scales. Then, I thresholded it.
+
+After that, I combined both color and grandient thresholds. Here's an example of my output for this step.  
+
+![alt text][image3_3]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
