@@ -131,7 +131,12 @@ Then I did some other stuff and fit my lane lines with a 2nd order polynomial ki
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+I did this in Step 5 in my code in `P2.ipynb`. I applied it to the following image:
+
+![alt text][image5_2]
+
+The Radius of Curvature = 2311(m), and the vehicle is 0.048m left of center. The radius is chosen to be the minimum radius among the two curvatures.
+
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
