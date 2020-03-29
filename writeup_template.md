@@ -34,6 +34,9 @@ The goals / steps of this project are the following:
 [image3_3]: ./output_images/binary_test1.png "Original and Binary"
 [image4_1]: ./output_images/warp_test1.png "Warp Example"
 
+[image5_1]: ./output_images/binary_warped_test3.png "Input for Fit Visual"
+[image5_2]: ./output_images/fitted_test3.jpg "output for Fit Visual"
+
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -118,9 +121,13 @@ Then, I made use of the function `getPerspectiveTransform()` in order to calcula
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
+For this question, I prepared a binary warped version of test 3 as an input.
+
+![alt text][image5_1]
+
 Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
 
-![alt text][image5]
+![alt text][image5_2]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
