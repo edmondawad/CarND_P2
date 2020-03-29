@@ -29,8 +29,8 @@ The goals / steps of this project are the following:
 
 [image1_1]: ./output_images/undistort_output.png "Original and Undistorted"
 [image2_1]: ./output_images/undistort_test1.png "Original and Undistorted"
-[image3_1]: ./output_images/HLScolorchannel_test1.png "HLS Channels"
-[image3_2]: ./output_images/HLScolorthreshold_test1.png "HLS Binary"
+[image3_1]: ./output_images/HLScolorchannels_test1.png "HLS Channels"
+[image3_2]: ./output_images/HLScolorthresholds_test1.png "HLS Binary"
 [image3_3]: ./output_images/binary_test1.png "Original and Binary"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
