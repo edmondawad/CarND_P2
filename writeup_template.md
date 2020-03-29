@@ -26,11 +26,12 @@ The goals / steps of this project are the following:
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
+
 [image1_1]: ./output_images/undistort_output.png "Original and Undistorted"
 [image2_1]: ./output_images/undistort_test1.png "Original and Undistorted"
-[image3_1]: ./test_images/HLScolorchannel_test1.jpg "HLS Channels"
-[image3_2]: ./test_images/HLScolorthreshold_test1.jpg "HLS Binary"
-[image3_3]: ./test_images/binary_test1.jpg "Original and Binary"
+[image3_1]: ./output_images/HLScolorchannel_test1.jpg "HLS Channels"
+[image3_2]: ./output_images/HLScolorthreshold_test1.jpg "HLS Binary"
+[image3_3]: ./output_images/binary_test1.jpg "Original and Binary"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -69,11 +70,11 @@ The code is in function `undistort()`. This function takes an image, `objpoints`
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps in `P2.ipynb`).  For the color threshold, I converted to HLS, isolated each channel:
+I used a combination of color and gradient thresholds to generate a binary image (thresholding steps in `P2.ipynb`).  For the color threshold, I converted to HLS, and isolated each channel:
 
 ![alt text][image3_1]
 
-Then tried a binary version for each channel (using lower thresholds for H). The S-channel seems like the best option, as appears here:
+Then, I tried a binary version for each channel (using lower thresholds for H). The S-channel seems like the best option, as appears here:
 
 ![alt text][image3_2]
 
