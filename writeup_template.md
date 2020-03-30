@@ -35,7 +35,9 @@ The goals / steps of this project are the following:
 [image4_1]: ./output_images/warp_test1.png "Warp Example"
 
 [image5_1]: ./output_images/binary_warped_test3.png "Input for Fit Visual"
-[image5_2]: ./output_images/fitted_test3.jpg "output for Fit Visual"
+[image5_2]: ./output_images/fitted_test3.png "output for Fit Visual"
+[image6_1]: ./output_images/pipeline_test3.png "output for Pipeline"
+
 
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -140,9 +142,11 @@ The Radius of Curvature = 2311(m), and the vehicle is 0.048m left of center. The
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+I implemented this step in Step 5 in my code in `P2.ipynb` in the function `pipeline()`.  Here is an example of my result on test image 3:
 
-![alt text][image6]
+![alt text][image6_1]
+
+Below the code, I also show the testing  for all 8 test images.
 
 ---
 
