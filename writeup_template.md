@@ -127,7 +127,7 @@ For this question, I prepared a binary warped version of test 3 as an input.
 
 ![alt text][image5_1]
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Then, I created a function `use_windows()` which uses the sliding windows method to calculate the list of activated pixel that represent the two lanes. The sliding windows method start with searching in the lower half of the image using histogram. Since lanes in the bottom half of the image would be more like a straight line, the histogram would be likely to show two peaks, which represent the two lanes. From there, the upper half would be divided into equal-height smaller pairs of windows (each lane gets its own windows). Each window is drawn around the identified lanes: first sliding window starts from the histogram-found peaks. After that, the next window is re-centered if sufficient activated pixels were found within the current window. This function is called by another function `find_lane_pixels()`. In the primitive version of my code, this function calls the use_windows() and it eventually returns the positions of the left/right lane pixels. Later, in the video question, I add another function `search_around_poly()` which provides a faster calculation of the indices. Once we have the left/right lane pixels, we use the x and y values to calculate the 2nd order polynomial fit. The result looks like this:
 
 ![alt text][image5_2]
 
@@ -142,7 +142,7 @@ The Radius of Curvature = 2311(m), and the vehicle is 0.048m left of center. The
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in Step 5 in my code in `P2.ipynb` in the function `pipeline()`.  Here is an example of my result on test image 3:
+I implemented this step in Step 6 in my code in `P2.ipynb` in the function `pipeline()`.  The order of the steps is the following: 1) calibrate camera (using object points and image points), 2) use this to undistort the image, 3) transform the image to an eagle-eye view, 4) produce the binary version of the image, 5) fit polynomials to the activated pixels in the image, and 6) calculate curviatures and distance from center. In the primitive version of my code (works for an image), I used the calculated fit and curvature for my final output. In the video version as I explain later, I considered a sanity check, and I updated my curvatures if the sanity check failed. I also used a smoothed version of the fit numbers and x-fitted values. Then, I create a filled polygon for the warped version of the image, and I inverse-transformed it to the original unwarped image, and I layered it with some weight (transparency) over the road. Finally, I print out the minimum of the two curvatures and the distance from center at the top. Here is an example of my result on test image 3:
 
 ![alt text][image6_1]
 
@@ -155,6 +155,20 @@ Below the code, I also show the testing  for all 8 test images.
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
 Here's a [link to my video result](./project_video_output.mp4)
+
+For this questions, I updated by previous code in the following ways:
+
+1) I created a function `search_around_poly()` which provides a faster calculation of the indices. The function basically takes the fit lines from previous frame, and search within the area around those lines.
+
+2) Now I have two versions of calculation: a) slow version (sliding window) and (b) fast version (search around the fit lane). The very first frame has to use the slow version. After that, lanes are calculated using the fast version, except if finding a lane fails 5 times in a row. If this happens, the calculation goes back to the slow version.
+
+3) I added a class called `Line` (find it at the begining before Step 1). This class contains the parameters that are updated or called during the video.
+
+4) I created a function called `sanityCheck()` that checks whether the identified lines/curvatures make sense. This function is called when the fast (search around the lanes) method is used.
+
+5) I created a function called `updateLines()` which updates the parameters of the two `Line` objects. The function is called when the slow (sliding window) method is used or when the sanity check is passed.
+
+6) I used a smooth version of the fit, and the x-fitted values from the last n rounds.
 
 ---
 
