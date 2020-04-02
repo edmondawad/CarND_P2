@@ -176,4 +176,6 @@ For this questions, I updated by previous code in the following ways:
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+There are two remaining issues that I couldn't fix: 
+1) It seems like the video is taking too much time, as if the fast method is not being called. I had already checked whether the fast method is being called, and I have tested the time of computation for each of the fast and slow methods, and validated that the fast is 10 times faster. I am still unsure it is doing what I expected it to do.
+2) The performance on the video seems to be great for most of the time. The only exception is in the middle where the green polygon gets messed up for a second or two.
